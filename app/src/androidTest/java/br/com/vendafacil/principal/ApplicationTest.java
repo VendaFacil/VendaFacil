@@ -1,4 +1,4 @@
-package br.com.vendafacil.vendafacil;
+package br.com.vendafacil.principal;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

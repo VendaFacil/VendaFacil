@@ -1,4 +1,4 @@
-package br.com.vendafacil.vendafacil;
+package br.com.vendafacil.principal;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
