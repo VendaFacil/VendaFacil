@@ -7,14 +7,14 @@ import android.content.ContentValues;
  */
 public class Cliente {
     private ContentValues values;
-    private String nome;
+    private String nome = "";
     private int id = 0; //padrão é zero pois indica que não existe esse cliente ainda
-    private String telefone;
-    private String endereco;
-    private float divida;
-    private float valor_parcela;
-    private String data_vencimento;
-    private String complemento;
+    private String telefone = "";
+    private String endereco = "";
+    private float divida = 0 ;
+    private float valor_parcela = 0;
+    private String data_vencimento = "";
+    private String complemento = "";
 
     Cliente(){
         this.values = new ContentValues();

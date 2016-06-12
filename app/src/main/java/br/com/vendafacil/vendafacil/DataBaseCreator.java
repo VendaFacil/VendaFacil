@@ -33,8 +33,8 @@ public class DataBaseCreator extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE"+TABELA+"(" +
-                ID + " integer primary key auto increment,"+
+        String sql = "CREATE TABLE "+TABELA+"(" +
+                ID + " integer primary key autoincrement,"+
                 NOMECLIENTE+" text," +
                 TELEFONE + " text,"+
                 ENDERECO + " text," +

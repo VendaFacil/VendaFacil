@@ -1,5 +1,7 @@
 package br.com.vendafacil.vendafacil;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -97,5 +99,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void openCadastro(View v){
+        Intent view = new Intent(MainActivity.this,TelaCadastro.class);
+        startActivity(view);
     }
 }
