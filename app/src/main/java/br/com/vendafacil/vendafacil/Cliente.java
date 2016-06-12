@@ -20,6 +20,11 @@ public class Cliente {
         this.values = new ContentValues();
     }
 
+    Cliente(ContentValues values){
+        setAll(values);
+        this.values = values;
+    }
+
     public int getId() {
         return id;
     }
@@ -104,7 +109,17 @@ public class Cliente {
         values.put(DataBaseCreator.COMPLEMENTO,getComplemento());
     }
 
+    /**
+     * recebe um dicionario contentvalues e setta todos os campos do cliente
+     * @param values
+     */
     public void setAll(ContentValues values){
-        nome
+        this.nome = values.getAsString(DataBaseCreator.NOMECLIENTE);
+        this.telefone = values.getAsString(DataBaseCreator.TELEFONE);
+        this.endereco = values.getAsString(DataBaseCreator.ENDERECO);
+        this.divida = values.getAsFloat(DataBaseCreator.DIVIDA);
+        this.valor_parcela = values.getAsFloat(DataBaseCreator.VALORPARCELA);
+        this.data_vencimento = values.getAsString(DataBaseCreator.VENCIMENTO);
+        this.complemento = values.getAsString(DataBaseCreator.COMPLEMENTO);
     }
 }

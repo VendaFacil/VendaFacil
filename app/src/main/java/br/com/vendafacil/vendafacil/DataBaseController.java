@@ -55,7 +55,8 @@ public class DataBaseController {
     }
 
     /**
-     * recebe um cliente e atualiza seus campos no banco de dados
+     * recebe um cli
+     * ente e atualiza seus campos no banco de dados
      * retorna true se atualizou e false caso contrario
      * @param cliente
      * @return
@@ -90,8 +91,30 @@ public class DataBaseController {
         if(cursor.moveToFirst()){
             do {
                 if(cursor.getInt(0) == id)
+                {
+                    ContentValues values = new ContentValues();
+                    novo.setNome(cursor.getString(cursor.getColumnIndexOrThrow(DataBaseCreator.NOMECLIENTE)));
+                    novo.setTelefone(cursor.getString(cursor.getColumnIndexOrThrow(DataBaseCreator.TELEFONE)));
+                    novo.setEndereco(cursor.getString(cursor.getColumnIndexOrThrow(DataBaseCreator.ENDERECO)));
+                    novo.setDivida(cursor.getFloat(cursor.getColumnIndexOrThrow(DataBaseCreator.DIVIDA)));
+                    novo.setValor_parcela(cursor.getFloat(cursor.getColumnIndexOrThrow(DataBaseCreator.VALORPARCELA)));
+                    novo.setData_vencimento(cursor.getString(cursor.getColumnIndexOrThrow(DataBaseCreator.VENCIMENTO)));
+                    novo.setComplemento(cursor.getString(cursor.getColumnIndexOrThrow(DataBaseCreator.COMPLEMENTO)));
+                    novo.setId(id);
+                    return novo;
+                }
                     
             }while (cursor.moveToNext());
         }
+
+        return null;
+    }
+
+
+    public void delete(int id){
+        String where = DataBaseCreator.ID + "="+ id ;
+        db = vendafacilDB.getReadableDatabase();
+        db.delete(DataBaseCreator.TABELA,where,ALL_FIELDS);
+        db.close();
     }
 }
