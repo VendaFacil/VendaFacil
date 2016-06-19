@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by CreuzaFDR on 03/06/2016.
@@ -13,7 +14,7 @@ import android.util.Log;
 public class DataBaseController {
     SQLiteDatabase db;
     DataBaseCreator vendafacilDB;
-    private String[] ALL_FIELDS = {DataBaseCreator.NOMEBANCO,DataBaseCreator.ID,DataBaseCreator.TELEFONE
+    private String[] ALL_FIELDS = {DataBaseCreator.ID, DataBaseCreator.NOMECLIENTE, DataBaseCreator.TELEFONE
     ,DataBaseCreator.ENDERECO,DataBaseCreator.DIVIDA,DataBaseCreator.VALORPARCELA,DataBaseCreator.VENCIMENTO};
 
     DataBaseController(Context context){
@@ -41,12 +42,12 @@ public class DataBaseController {
      */
     public boolean inserirRegistro(Cliente cliente){
         long result;
-       //settar content values do cliente
-        cliente.setValues();
+
         //abrindo bando em modo leitura e inserindo dados na tabela
         db = vendafacilDB.getWritableDatabase();
+
         result = db.insert(DataBaseCreator.TABELA,null,cliente.getValues());
-        db.close();
+        //db.close(); do not close data base because it will be used on next call and the android kernel will close when its not needed
 
         if(result == -1)
             Log.i("result insert", String.valueOf(result));
@@ -77,11 +78,33 @@ public class DataBaseController {
         try{
             db = vendafacilDB.getReadableDatabase();
             Cursor cursor = db.query(DataBaseCreator.TABELA,ALL_FIELDS,null,null,null,null,null);
-            db.close();
+            //db.close(); do not close data base ''cause it wiill be used on next call
             return cursor;
         }catch (Exception e){
             return null;
         }
+    }
+
+    /**
+     * Este metodo recebe os campos do banco de dados que será feita a consulta
+     * E retorna um cursor com todos os registros organizados pelo paramento campos
+     *
+     * @param campos
+     * @return
+     */
+    public Cursor consultarCampos(String[] campos) {
+
+        try {
+            db = vendafacilDB.getReadableDatabase();
+            Cursor cursor = db.query(DataBaseCreator.TABELA, campos, null, null, null, null, null);
+            //db.close(); do not close database because it will be used on next call
+            cursor.moveToFirst();
+            return cursor;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     public Cliente searchByID(int id){
@@ -115,6 +138,6 @@ public class DataBaseController {
         String where = DataBaseCreator.ID + "="+ id ;
         db = vendafacilDB.getReadableDatabase();
         db.delete(DataBaseCreator.TABELA,where,ALL_FIELDS);
-        db.close();
+        // db.close(); do not close data base because it will be used on next call and the android kernel will close when its not needed
     }
 }

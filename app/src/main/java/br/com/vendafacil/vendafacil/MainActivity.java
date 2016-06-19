@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DataBaseController dataBaseController = new DataBaseController(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -104,5 +105,10 @@ public class MainActivity extends AppCompatActivity
     public void openCadastro(View v){
         Intent view = new Intent(MainActivity.this,TelaCadastro.class);
         startActivity(view);
+    }
+
+    public void openClientList(View view) {
+        Intent intent = new Intent(MainActivity.this, TelaClientes.class);
+        startActivity(intent);
     }
 }

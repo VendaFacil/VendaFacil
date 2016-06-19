@@ -7,14 +7,14 @@ import android.content.ContentValues;
  */
 public class Cliente {
     private ContentValues values;
-    private String nome = "";
+    private String nome = null;
     private int id = 0; //padrão é zero pois indica que não existe esse cliente ainda
-    private String telefone = "";
-    private String endereco = "";
+    private String telefone = null;
+    private String endereco = null;
     private float divida = 0 ;
     private float valor_parcela = 0;
-    private String data_vencimento = "";
-    private String complemento = "";
+    private String data_vencimento = null;
+    private String complemento = null;
 
     Cliente(){
         this.values = new ContentValues();
@@ -100,13 +100,15 @@ public class Cliente {
     public void setValues() {
         //inserindo valores no dicionario
         values.put(DataBaseCreator.NOMECLIENTE,getNome());
-        values.put(DataBaseCreator.ID,getId());
+        //values.put(DataBaseCreator.ID,1);
         values.put(DataBaseCreator.TELEFONE,getTelefone());
         values.put(DataBaseCreator.ENDERECO,getEndereco());
         values.put(DataBaseCreator.DIVIDA,getDivida());
         values.put(DataBaseCreator.VALORPARCELA,getValor_parcela());
         values.put(DataBaseCreator.VENCIMENTO,getData_vencimento());
         values.put(DataBaseCreator.COMPLEMENTO,getComplemento());
+
+
     }
 
     /**
