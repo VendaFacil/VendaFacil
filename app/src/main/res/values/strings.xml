@@ -1,8 +1,23 @@
 <resources>
-    <string name="app_name">Venda Facil</string>
+    <string name="app_name">Venda Fácil</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="_clientes">Clientes</string>
+    <string name="_pendencias">Pendências</string>
+    <string name="_produtos">Produtos</string>
+    <string name="_configuracoes">Configurações</string>
+    <string name="_vendas">Vendas</string>
+    <string name="_nova_venda">Nova Venda</string>
+    <string name="_cliente">Cliente</string>
+    <string name="_endereco">Endereço</string>
+    <string name="_telefone">Telefone</string>
+    <string name="_observacoes">Observações</string>
+    <string name="_cadastrar">Cadastrar</string>
+    <string name="_valor">Valor (R$)</string>
+    <string name="_data">Data</string>
+    <string name="_selecionar_data">Toque para selecionar a data</string>
+    <string name="_selecionar">Selecionar</string>
 </resources>
